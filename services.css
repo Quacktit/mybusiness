@@ -1,0 +1,183 @@
+/* ============================================================
+   Services page styles
+   ============================================================ */
+
+/* ---------- Service blocks (alternating) ---------- */
+.service-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  align-items: center;
+  padding: var(--sp-8) 0;
+  border-top: 1px solid var(--line);
+}
+.service-block:first-of-type { border-top: none; padding-top: var(--sp-6); }
+
+.service-block--reverse .service-copy { order: 2; }
+.service-block--reverse .service-visual { order: 1; }
+
+.service-copy h2 { margin-bottom: var(--sp-4); }
+.service-copy > p { margin-bottom: var(--sp-5); }
+
+.service-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.service-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--ink-900);
+}
+
+.service-feature svg {
+  width: 18px;
+  height: 18px;
+  color: var(--success-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.service-visual {
+  background: var(--sky-100);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.service-visual svg { width: 64%; height: auto; }
+
+@media (max-width: 860px) {
+  .service-block, .service-block--reverse {
+    grid-template-columns: 1fr;
+  }
+  .service-block--reverse .service-copy,
+  .service-block--reverse .service-visual {
+    order: initial;
+  }
+  .service-visual { order: -1; min-height: 220px; }
+}
+
+/* ---------- Engagement / pricing-style tiers ---------- */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  align-items: stretch;
+}
+
+.tier-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-card--featured {
+  border-color: var(--blue-700);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.tier-badge {
+  position: absolute;
+  top: -12px;
+  left: var(--sp-6);
+  background: var(--blue-700);
+  color: var(--white);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.tier-name { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-md); color: var(--ink-900); margin-bottom: var(--sp-2); }
+.tier-price { font-family: var(--font-display); font-size: var(--fs-2xl); font-weight: 700; color: var(--blue-700); margin-bottom: var(--sp-1); }
+.tier-price span { font-size: var(--fs-sm); color: var(--slate-500); font-weight: 500; }
+.tier-desc { font-size: var(--fs-sm); margin-bottom: var(--sp-5); }
+
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  flex: 1;
+}
+
+.tier-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--ink-900);
+}
+
+.tier-list svg { width: 16px; height: 16px; color: var(--blue-700); flex-shrink: 0; margin-top: 3px; }
+
+@media (max-width: 980px) {
+  .tiers-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-list { max-width: 760px; margin: 0 auto; }
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  background: none;
+  border: none;
+  text-align: left;
+  padding: var(--sp-5) 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.faq-question .plus {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+.faq-question .plus::before,
+.faq-question .plus::after {
+  content: "";
+  position: absolute;
+  background: var(--blue-700);
+  border-radius: 2px;
+  transition: transform 0.2s var(--ease);
+}
+.faq-question .plus::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+.faq-question .plus::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+
+.faq-item.is-open .plus::after { transform: translateX(-50%) scaleY(0); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s var(--ease);
+}
+
+.faq-answer p {
+  font-size: var(--fs-sm);
+  padding-bottom: var(--sp-5);
+  max-width: 640px;
+}
