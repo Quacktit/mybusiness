@@ -211,6 +211,25 @@
             <a href="contact.html" class="btn btn--ghost btn--block">Talk to us</a>
           </div>
         </div>
+
+        <!-- ===================== CURRENCY CONVERTER ===================== -->
+        <div class="converter-card reveal">
+          <h3>Estimate your price in rubles</h3>
+          <p>Prices above are listed in USD. Enter an amount to see today's approximate equivalent in RUB.</p>
+          <div id="currency-converter" class="converter-widget">
+            <div class="converter-field">
+              <label for="usd-amount">Amount in USD</label>
+              <input type="number" id="usd-amount" value="4500" min="0" step="100">
+            </div>
+            <span class="converter-arrow" aria-hidden="true">→</span>
+            <div class="converter-field">
+              <label for="rub-amount">Amount in RUB</label>
+              <input type="text" id="rub-amount" readonly>
+            </div>
+          </div>
+          <p id="rate-label" class="converter-rate-label"></p>
+          <p id="rate-error" class="converter-error" style="display:none;"></p>
+        </div>
       </div>
     </section>
 
